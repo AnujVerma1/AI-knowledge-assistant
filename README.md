@@ -79,6 +79,7 @@ Every setting is documented in [backend/.env.example](backend/.env.example). Use
 | `python -m scripts.smoke_test [url]` | End-to-end test against a running API (two users, upload, ask, isolation, cleanup) |
 | `python -m scripts.reindex_documents` | Rebuilds all vectors after changing the embedding model |
 | `python -m scripts.rag_cli ask "..."` | Try the RAG pipeline from the command line |
+| `python -m scripts.evaluate [--judge]` | Retrieval and answer-quality evaluation (see [Evaluation](#evaluation)) |
 
 ## Tests
 
@@ -92,6 +93,37 @@ The tests cover authentication (cookies, expired and forged tokens, CSRF, rate l
 isolation, invalid uploads, duplicate detection, document deletion and vector cleanup, retrieval,
 insufficient-evidence answers, provider timeouts, rate-limit and failure handling, and pgvector
 behaviour (owner and status filtering, cascade delete, atomic re-indexing).
+
+## Evaluation
+
+`python -m scripts.evaluate --judge` scores the pipeline on a labelled dataset of 50 questions
+([backend/evaluation/dataset.json](backend/evaluation/dataset.json)) about the five fictional
+sample documents: 40 answerable (each with its source file, page, supporting passage and key facts)
+and 10 unanswerable. The sample documents overlap on purpose (two different "P1" response times,
+leave in two documents, laptops in two documents). Metrics are computed in plain Python
+([backend/evaluation/metrics.py](backend/evaluation/metrics.py)).
+
+Latest run ([full report](backend/evaluation/REPORT.md)): Gemini `gemini-3.5-flash-lite` with
+`gemini-embedding-2` (768 dimensions), 14 chunks.
+
+| Retrieval (40 questions) | Result |
+|---|---|
+| Recall@5 / Recall@3 | 100% / 100% |
+| Recall@1 | 97.5% (one question ranked its passage 2nd, behind an overlapping travel-allowance page) |
+| MRR | 0.988 |
+
+| Answers | Result |
+|---|---|
+| Answerable: answered, with all key facts and a correct citation | 40 / 40 |
+| Numbers in answers found in the retrieved passages | 40 / 40 |
+| Judged supported by the passages (LLM judge) | 40 / 40 |
+| Unanswerable: correctly refused | 10 / 10 (3 by the relevance threshold before any model call, 7 by the model) |
+| Answer latency p50 / p95 (from a laptop, excluding rate-limit waits) | 1.46 s / 3.44 s |
+
+These scores are at the ceiling, which mainly shows that this small, self-written dataset is too easy
+to separate a good system from a better one. The corpus is tiny (14 chunks), the key-fact and number
+checks are string matches, and the judge is the same model that wrote the answers. Treat the numbers
+as a regression baseline, not as evidence of how the system performs on large real-world documents.
 
 ## Deployment
 
