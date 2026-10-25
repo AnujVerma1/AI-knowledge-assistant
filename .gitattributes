@@ -1,0 +1,5 @@
+# Store text with LF line endings; never touch binary files.
+* text=auto eol=lf
+*.pdf binary
+*.png binary
+*.ico binary
