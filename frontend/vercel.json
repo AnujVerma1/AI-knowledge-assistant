@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://knowledge-assistant-api.onrender.com/api/:path*"
+      "destination": "https://knowledge-assistant-api-389x.onrender.com/api/:path*"
     },
     {
       "source": "/(.*)",
