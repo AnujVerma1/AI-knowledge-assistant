@@ -1,0 +1,50 @@
+# Render Blueprint for the FastAPI backend (https://render.com/docs/blueprint-spec).
+# Non-secret settings live here; secrets (database URLs, storage credentials, API keys,
+# JWT secret) are pasted into the Render dashboard from backend/.env.production.
+services:
+  - type: web
+    name: knowledge-assistant-api
+    runtime: python
+    plan: free
+    region: ohio # same AWS region as the Neon database (us-east-2) to keep queries fast
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    # Migrations run on every start (idempotent). --proxy-headers makes the visitor's IP (from
+    # X-Forwarded-For, set by Render and Vercel) visible to the rate limiter.
+    startCommand: alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips "*"
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: APP_ENV
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      # The Vercel site's URL, e.g. https://knowledge-assistant.vercel.app (set after the first Vercel deploy)
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: LLM_PROVIDER
+        value: openai_compatible
+      - key: HOSTED_LLM_BASE_URL
+        value: https://generativelanguage.googleapis.com/v1beta/openai/
+      - key: HOSTED_LLM_MODEL
+        value: gemini-3.5-flash-lite
+      - key: LLM_TIMEOUT_SECONDS
+        value: "60"
+      - key: EMBEDDING_PROVIDER
+        value: openai_compatible
+      - key: HOSTED_EMBEDDING_BASE_URL
+        value: https://generativelanguage.googleapis.com/v1beta/openai/
+      - key: EMBEDDING_MODEL
+        value: gemini-embedding-2
+      - key: EMBEDDING_DIMENSIONS
+        value: "768"
+      - key: VECTOR_STORE
+        value: pgvector
+      - key: STORAGE_BACKEND
+        value: s3
+      - key: S3_BUCKET
+        value: documents
+      # Calibrated for gemini-embedding-2 at 768 dimensions (answerable >= 0.73, off-topic <= 0.57)
+      - key: MIN_RELEVANCE_SCORE
+        value: "0.62"

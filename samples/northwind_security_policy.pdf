@@ -1,0 +1,54 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R 8 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 541 >>
+stream
+BT /F1 11 Tf 14 TL 50 790 Td (Northwind Labs Information Security Policy \(fictional sample document\)) Tj T* (Page 1 - Accounts and passwords) Tj T* () Tj T* (All company accounts must use a password of at least 14 characters.) Tj T* (Passwords must be changed immediately if a compromise is suspected,) Tj T* (but routine periodic password changes are not required.) Tj T* (Multi-factor authentication is mandatory for email, source code hosting) Tj T* (and the cloud console. Hardware security keys are issued to administrators.) Tj T* ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 437 >>
+stream
+BT /F1 11 Tf 14 TL 50 790 Td (Page 2 - Devices and data) Tj T* () Tj T* (Company laptops must use full-disk encryption and lock after 5 minutes) Tj T* (of inactivity. Customer data may only be stored in approved systems;) Tj T* (copying customer data to personal devices or USB drives is prohibited.) Tj T* (Lost or stolen devices must be reported to it-security@northwind.example) Tj T* (within 1 hour of discovering the loss.) Tj T* ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 431 >>
+stream
+BT /F1 11 Tf 14 TL 50 790 Td (Page 3 - Incident response) Tj T* () Tj T* (Security incidents are classified as P1 \(critical\), P2 \(high\) or P3 \(low\).) Tj T* (P1 incidents require the on-call security engineer to respond within) Tj T* (15 minutes and a written incident report within 48 hours.) Tj T* (Phishing emails should be reported with the Report Phishing button) Tj T* (and must not be forwarded to colleagues.) Tj T* ET
+endstream
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000127 00000 n 
+0000000197 00000 n 
+0000000323 00000 n 
+0000000915 00000 n 
+0000001041 00000 n 
+0000001529 00000 n 
+0000001655 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R >>
+startxref
+2137
+%%EOF

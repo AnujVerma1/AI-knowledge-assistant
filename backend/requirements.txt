@@ -1,0 +1,35 @@
+# Direct dependencies, pinned to versions verified as mutually compatible.
+# Python 3.12 is the target runtime (pydantic-settings and SQLAlchemy 2.1 need 3.11+).
+
+# Web API
+fastapi==0.162.0
+uvicorn[standard]==0.54.0
+python-multipart==0.0.32
+pydantic==2.14.1
+pydantic-settings==2.16.1
+email-validator==2.3.0
+
+# Relational database (psycopg 3, not psycopg2)
+sqlalchemy==2.1.6
+alembic==1.20.1
+psycopg[binary]==3.3.6
+pgvector==0.5.1
+
+# Object storage for uploaded files in production (S3 API; used with Neon Object Storage)
+boto3==1.43.118
+
+# Authentication (pwdlib replaces the unmaintained passlib; PyJWT replaces python-jose)
+pwdlib[argon2]==0.3.1
+pyjwt==2.15.1
+
+# RAG pipeline (LangChain 1.x split packages; no umbrella "langchain" package needed)
+langchain-core==1.7.0
+langchain-text-splitters==1.1.3
+langchain-ollama==1.1.0
+langchain-openai==1.7.2
+langchain-chroma==1.1.0
+chromadb==1.5.9
+pypdf==6.21.2
+
+# Logging
+structlog==26.1.0

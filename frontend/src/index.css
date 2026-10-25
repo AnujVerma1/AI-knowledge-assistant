@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-zinc-50 text-zinc-900 antialiased;
+}
+
+/* Rendered assistant answers (Tailwind's preflight resets element styles). */
+.markdown {
+  @apply text-[15px] leading-7 text-zinc-800;
+}
+.markdown > * + * {
+  @apply mt-3;
+}
+.markdown ul {
+  @apply list-disc pl-5;
+}
+.markdown ol {
+  @apply list-decimal pl-5;
+}
+.markdown li + li {
+  @apply mt-1;
+}
+.markdown strong {
+  @apply font-semibold text-zinc-900;
+}
+.markdown a {
+  @apply text-indigo-600 underline underline-offset-2;
+}
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  @apply font-semibold text-zinc-900;
+}
+.markdown code {
+  @apply rounded bg-zinc-100 px-1 py-0.5 font-mono text-[13px];
+}
+.markdown pre {
+  @apply overflow-x-auto rounded-lg bg-zinc-900 p-3 text-zinc-100;
+}
+.markdown pre code {
+  @apply bg-transparent p-0 text-zinc-100;
+}
+.markdown blockquote {
+  @apply border-l-2 border-zinc-300 pl-3 text-zinc-600;
+}
+.markdown table {
+  @apply block overflow-x-auto text-sm;
+}
+.markdown th,
+.markdown td {
+  @apply border border-zinc-200 px-2 py-1 text-left;
+}

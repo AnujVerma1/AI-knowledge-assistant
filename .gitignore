@@ -1,0 +1,27 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Secrets: only the .env.example templates are committed
+.env
+.env.*
+!.env.example
+
+# Local runtime data (uploaded files, Chroma vector store)
+backend/data/
+
+# Frontend
+node_modules/
+frontend/dist/
+.vercel/
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+.neon
