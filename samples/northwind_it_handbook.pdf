@@ -1,0 +1,54 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R 8 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 475 >>
+stream
+BT /F1 11 Tf 14 TL 50 790 Td (Northwind Labs IT Handbook \(fictional sample document\)) Tj T* (Page 1 - Laptops and software) Tj T* () Tj T* (New employees receive their laptop on their first working day.) Tj T* (Engineers can choose a 14-inch laptop with either Linux or macOS.) Tj T* (Laptops are replaced every 3 years.) Tj T* (Software with a paid licence must be requested through an IT ticket;) Tj T* (free open-source tools may be installed without approval.) Tj T* ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 333 >>
+stream
+BT /F1 11 Tf 14 TL 50 790 Td (Page 2 - Network and VPN) Tj T* () Tj T* (The VPN must be used on any public or hotel Wi-Fi network.) Tj T* (The company VPN client is called NorthGate.) Tj T* (The staff Wi-Fi network in all offices is NW-Staff.) Tj T* (The guest Wi-Fi password changes every Monday and is shown at reception.) Tj T* ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 417 >>
+stream
+BT /F1 11 Tf 14 TL 50 790 Td (Page 3 - Support and backups) Tj T* () Tj T* (IT support tickets are raised at helpdesk.northwind.example.) Tj T* (A complete IT outage is treated as an IT P1 and gets a response within 30 minutes.) Tj T* (Standard tickets are answered within 1 business day.) Tj T* (Laptops are backed up every night at 01:00 IST to the company cloud,) Tj T* (and backups are kept for 90 days.) Tj T* ET
+endstream
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000127 00000 n 
+0000000197 00000 n 
+0000000323 00000 n 
+0000000849 00000 n 
+0000000975 00000 n 
+0000001359 00000 n 
+0000001485 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R >>
+startxref
+1953
+%%EOF

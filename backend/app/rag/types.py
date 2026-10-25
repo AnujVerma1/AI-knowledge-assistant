@@ -1,6 +1,6 @@
 """Plain data types passed between RAG pipeline stages."""
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Literal
 
 
@@ -42,3 +42,5 @@ class RagAnswer:
     answer: str
     citations: list[Citation]
     sufficient_evidence: bool
+    # The chunks that were given to the model (after the relevance filter); used for evaluation.
+    evidence: list[RetrievedChunk] = field(default_factory=list)

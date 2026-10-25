@@ -1,0 +1,54 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R 8 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 407 >>
+stream
+BT /F1 11 Tf 14 TL 50 790 Td (Northwind Labs Travel Policy \(fictional sample document\)) Tj T* (Page 1 - Booking) Tj T* () Tj T* (All flights and hotels are booked through the TravelDesk portal.) Tj T* (Flights must be booked at least 14 days before departure.) Tj T* (Economy class is used for flights shorter than 8 hours;) Tj T* (business class is allowed only for flights longer than 8 hours.) Tj T* ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 348 >>
+stream
+BT /F1 11 Tf 14 TL 50 790 Td (Page 2 - Allowances) Tj T* () Tj T* (The daily allowance for domestic travel is INR 2,500.) Tj T* (The daily allowance for international travel is USD 75.) Tj T* (Hotel costs are capped at INR 7,000 per night in metro cities.) Tj T* (Airport taxis are reimbursed with a receipt; personal car rentals are not.) Tj T* ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 356 >>
+stream
+BT /F1 11 Tf 14 TL 50 790 Td (Page 3 - International travel) Tj T* () Tj T* (International trips need manager approval at least 21 days before departure.) Tj T* (Visa fees are reimbursed in full.) Tj T* (Travel insurance is mandatory and is arranged by the HR team.) Tj T* (Employees must carry a printed copy of the travel insurance certificate.) Tj T* ET
+endstream
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000127 00000 n 
+0000000197 00000 n 
+0000000323 00000 n 
+0000000781 00000 n 
+0000000907 00000 n 
+0000001306 00000 n 
+0000001432 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R >>
+startxref
+1839
+%%EOF

@@ -85,7 +85,7 @@ def validate_answer(raw_answer: str, evidence: list[RetrievedChunk]) -> RagAnswe
     """
     text = raw_answer.strip()
     if not text or INSUFFICIENT_EVIDENCE_MARKER in text:
-        return RagAnswer(answer=INSUFFICIENT_EVIDENCE_ANSWER, citations=[], sufficient_evidence=False)
+        return RagAnswer(answer=INSUFFICIENT_EVIDENCE_ANSWER, citations=[], sufficient_evidence=False, evidence=evidence)
 
     valid_labels = {source_label(i): chunk for i, chunk in enumerate(evidence)}
     cited: list[str] = []
@@ -106,7 +106,7 @@ def validate_answer(raw_answer: str, evidence: list[RetrievedChunk]) -> RagAnswe
     # which is still truthful: the answer was generated from exactly these chunks.
     labels = sorted(cited, key=lambda label: int(label[1:])) if cited else list(valid_labels)
     citations = [_citation(label, valid_labels[label]) for label in labels]
-    return RagAnswer(answer=text, citations=citations, sufficient_evidence=True)
+    return RagAnswer(answer=text, citations=citations, sufficient_evidence=True, evidence=evidence)
 
 
 def _citation(label: str, chunk: RetrievedChunk) -> Citation:
