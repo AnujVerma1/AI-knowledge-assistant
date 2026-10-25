@@ -81,6 +81,45 @@ Every setting is documented in [backend/.env.example](backend/.env.example). Use
 | `python -m scripts.rag_cli ask "..."` | Try the RAG pipeline from the command line |
 | `python -m scripts.evaluate [--judge]` | Retrieval and answer-quality evaluation (see [Evaluation](#evaluation)) |
 
+## Try it in two minutes
+
+1. Register an account (the app opens on the Documents page).
+2. Upload the PDFs from [samples/](samples/), for example `northwind_security_policy.pdf`, and wait until it shows **Ready**.
+3. Open **Chat** and ask *"What should I do if my laptop is stolen?"*. The answer cites the policy's page 2; click the source to see the excerpt or open the PDF at that page.
+4. Ask *"What is the capital of France?"*. The assistant replies that your documents don't contain the answer.
+5. Register a second account in a private window: it sees none of the first account's documents or conversations.
+
+## API
+
+All endpoints are under `/api`. Requests that change data need the `X-CSRF-Token` header (the
+token is returned by register, login and `/auth/me`). Errors always have the shape
+`{"error": {"code": "...", "message": "...", "details": ...}}`. Interactive documentation is
+served at `/api/docs` outside production.
+
+| Method | Path | Auth | Purpose |
+|---|---|---|---|
+| GET | `/health` | - | Liveness check (no dependencies) |
+| GET | `/health/ready` | - | Database connectivity and migration version |
+| POST | `/auth/register` | - | Create an account and start a session (201) |
+| POST | `/auth/login` | - | Start a session |
+| POST | `/auth/logout` | - | Clear the session cookies (204) |
+| GET | `/auth/me` | session | Current user and CSRF token |
+| POST | `/documents` | session + CSRF | Upload a PDF/TXT (multipart, 202; indexing continues in the background) |
+| GET | `/documents` | session | List your documents with status |
+| GET | `/documents/{id}` | session | One document (404 if it is not yours) |
+| GET | `/documents/{id}/file` | session | The original file, shown inline |
+| POST | `/documents/{id}/retry` | session + CSRF | Re-process a failed document (202) |
+| DELETE | `/documents/{id}` | session + CSRF | Delete the document, its vectors and file (204) |
+| POST | `/conversations` | session + CSRF | Start a conversation (201) |
+| GET | `/conversations` | session | List your conversations |
+| GET | `/conversations/{id}` | session | A conversation with its messages and stored citations |
+| DELETE | `/conversations/{id}` | session + CSRF | Delete a conversation (204) |
+| POST | `/conversations/{id}/messages` | session + CSRF | Ask a question; returns both messages, citations and `sufficient_evidence` |
+
+Common status codes: 401 not logged in or session expired, 403 missing CSRF token, 404 not found
+or not yours, 409 duplicate upload or email, 413 file too large, 415 unsupported file type,
+422 invalid input or unreadable document, 429 rate limited, 503/504 model, storage or index unavailable.
+
 ## Tests
 
 ```powershell
@@ -161,8 +200,15 @@ as a regression baseline, not as evidence of how the system performs on large re
 ## Project structure
 
 ```
-backend/   FastAPI app (api, core, db, models, repositories, services, rag), Alembic, tests, scripts
-frontend/  React app (components, pages, hooks, services, types)
-samples/   Fictional sample documents used in tests and demos
-docs/      Architecture notes
+backend/
+  app/          FastAPI app: api, core, db, models, repositories, services, rag
+  alembic/      Database migrations
+  evaluation/   Labelled dataset, metrics, latest report and results
+  scripts/      Environment check, smoke test, evaluation, re-indexing, CLI
+  tests/        Unit and API tests (offline) and integration tests (Neon)
+frontend/       React app: components, pages, hooks, services, types
+samples/        Fictional sample documents used in tests, evaluation and demos
+docs/           Architecture notes
+render.yaml     Backend deployment (Render)
+neon.ts         Neon configuration (object storage bucket)
 ```
